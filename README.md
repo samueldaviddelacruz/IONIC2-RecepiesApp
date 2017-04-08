@@ -1,1 +1,1 @@
-# IONIC2-RecepiesApp
+# IONIC2-RecipesAndShoppingList
