@@ -4,7 +4,7 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import {EditRecipe} from '../pages/edit-recipe/edit-recipe';
-import {Recipe} from '../pages/recipe/recipe';
+import {RecipePage} from '../pages/recipe/recipe';
 import {Recipes} from '../pages/recipes/recipes';
 import {ShoppingList} from '../pages/shopping-list/shopping-list';
 import {Tabs} from "../pages/tabs/tabs";
@@ -17,7 +17,7 @@ import {RecipesService} from "../services/recipes";
   declarations: [
     MyApp,
     EditRecipe,
-    Recipe,
+    RecipePage,
     Recipes,
     ShoppingList,
     Tabs
@@ -31,7 +31,7 @@ import {RecipesService} from "../services/recipes";
   entryComponents: [
     MyApp,
     EditRecipe,
-    Recipe,
+    RecipePage,
     Recipes,
     ShoppingList,
     Tabs

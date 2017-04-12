@@ -22,7 +22,7 @@ export class RecipesService {
   }
 
   removeRecipe(index: number) {
-    this.myRecipes.slice(index, 1);
+    this.myRecipes.splice(index, 1);
   }
 
 }

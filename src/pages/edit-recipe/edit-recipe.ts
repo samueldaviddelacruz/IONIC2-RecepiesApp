@@ -5,6 +5,7 @@ import {
 } from 'ionic-angular';
 import {FormArray, FormControl, FormGroup, Validators} from "@angular/forms";
 import {RecipesService} from "../../services/recipes";
+import {Recipe} from "../../models/recipe";
 
 
 @IonicPage()
@@ -17,9 +18,16 @@ export class EditRecipe implements OnInit {
   mode = 'New';
   selectOptions = ['Easy', 'Medium', 'Hard'];
   recipeForm: FormGroup;
-
+  recipe:Recipe;
+  index:number;
   ngOnInit() {
     this.mode = this.params.get('mode');
+
+    if(this.mode == 'Edit'){
+      this.recipe = this.params.get('recipe');
+      this.index = this.params.get('index');
+    }
+
     this.initializeForm()
   }
 
@@ -33,12 +41,29 @@ export class EditRecipe implements OnInit {
   }
 
   private initializeForm() {
+
+    let title = null;
+    let description = null;
+    let difficulty = 'Medium';
+    let ingredients = [];
+
+    if(this.mode == 'Edit'){
+      title = this.recipe.title;
+      description = this.recipe.description;
+      difficulty = this.recipe.difficulty;
+      for(let ingredient of this.recipe.ingredients){
+        ingredients.push(new FormControl(ingredient.name,Validators.required));
+      }
+
+    }
+
     this.recipeForm = new FormGroup({
-      'title': new FormControl(null, Validators.required),
-      'description': new FormControl(null, Validators.required),
-      'difficulty': new FormControl('Medium', Validators.required),
-      'ingredients': new FormArray([])
-    })
+      'title': new FormControl(title, Validators.required),
+      'description': new FormControl(description, Validators.required),
+      'difficulty': new FormControl(difficulty, Validators.required),
+      'ingredients': new FormArray(ingredients)
+    });
+
   }
 
   onSubmit() {
@@ -49,9 +74,16 @@ export class EditRecipe implements OnInit {
         return {name: name, amount: 1}
       });
     }
-    this.recipesService.addRecipe(value.title, value.description, value.difficulty, ingredients);
+
+    if(this.mode=="Edit"){
+      this.recipesService.updateRecipe(this.index,value.title,value.description,value.difficulty,value.ingredients);
+    }else{
+      console.log('hola?');
+      this.recipesService.addRecipe(value.title, value.description, value.difficulty, ingredients);
+    }
+
     this.recipeForm.reset();
-    this.navctrl.pop();
+    this.navctrl.popToRoot();
   }
 
   private createNewIngredientAlert() {
