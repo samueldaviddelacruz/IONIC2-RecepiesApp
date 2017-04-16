@@ -11,6 +11,8 @@ import {Tabs} from "../pages/tabs/tabs";
 import { MyApp } from './app.component';
 import {ShoppingListService} from "../services/shopping-list";
 import {RecipesService} from "../services/recipes";
+import {Signup} from "../pages/signup/signup";
+import {Signin} from "../pages/signin/signin";
 
 
 @NgModule({
@@ -20,7 +22,9 @@ import {RecipesService} from "../services/recipes";
     RecipePage,
     Recipes,
     ShoppingList,
-    Tabs
+    Tabs,
+    Signup,
+    Signin
 
   ],
   imports: [
@@ -34,7 +38,9 @@ import {RecipesService} from "../services/recipes";
     RecipePage,
     Recipes,
     ShoppingList,
-    Tabs
+    Tabs,
+    Signup,
+    Signin
   ],
   providers: [
     StatusBar,

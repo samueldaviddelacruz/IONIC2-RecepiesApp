@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
 import {IonicPage, NavController, NavParams} from 'ionic-angular';
+import {NgForm} from "@angular/forms";
 
 /**
  * Generated class for the Signin page.
@@ -17,8 +18,8 @@ export class Signin {
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad Signin');
+  onSignin(form:NgForm){
+    console.log(form.value);
   }
 
 }

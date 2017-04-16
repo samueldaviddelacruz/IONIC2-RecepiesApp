@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
 import {IonicPage, NavController, NavParams} from 'ionic-angular';
+import {NgForm} from "@angular/forms";
 
 /**
  * Generated class for the Signup page.
@@ -17,8 +18,10 @@ export class Signup {
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad Signup');
+  onSignup(form:NgForm){
+    console.log(form);
   }
+
+
 
 }
