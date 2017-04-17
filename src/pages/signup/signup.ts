@@ -1,13 +1,9 @@
 import {Component} from '@angular/core';
 import {IonicPage, NavController, NavParams} from 'ionic-angular';
 import {NgForm} from "@angular/forms";
+import {AuthService} from "../../services/auth";
 
-/**
- * Generated class for the Signup page.
- *
- * See http://ionicframework.com/docs/components/#navigation for more info
- * on Ionic pages and navigation.
- */
+
 @IonicPage()
 @Component({
   selector: 'page-signup',
@@ -15,11 +11,20 @@ import {NgForm} from "@angular/forms";
 })
 export class Signup {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private authService: AuthService) {
   }
 
-  onSignup(form:NgForm){
-    console.log(form);
+  async onSignup(form: NgForm) {
+    let values = form.value;
+    let result;
+    try {
+      result = await this.authService.signup(values.email, values.password);
+      console.log(result);
+    } catch (error) {
+      console.log(error);
+    }
+
+
   }
 
 

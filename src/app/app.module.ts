@@ -13,6 +13,7 @@ import {ShoppingListService} from "../services/shopping-list";
 import {RecipesService} from "../services/recipes";
 import {Signup} from "../pages/signup/signup";
 import {Signin} from "../pages/signin/signin";
+import {AuthService} from "../services/auth";
 
 
 @NgModule({
@@ -47,7 +48,8 @@ import {Signin} from "../pages/signin/signin";
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     ShoppingListService,
-    RecipesService
+    RecipesService,
+    AuthService
   ]
 })
 export class AppModule {}
