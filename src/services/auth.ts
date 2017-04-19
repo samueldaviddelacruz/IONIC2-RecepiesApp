@@ -11,4 +11,8 @@ export class AuthService {
   async signin(email: string, password: string) {
     return firebase.auth().signInWithEmailAndPassword(email, password);
   }
+
+  logout() {
+    firebase.auth().signOut();
+  }
 }

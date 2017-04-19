@@ -9,14 +9,14 @@
 
   <ion-content>
     <ion-list>
-      <button ion-item icon-left (click)="onLoad(TabsPage)">
+      <button ion-item icon-left (click)="onLoad(rootPage)" *ngIf="isAuthenticated">
         <ion-icon name="book">
 
         </ion-icon>
         Recipe Book
       </button>
 
-      <button ion-item icon-left (click)="onLoad(signinPage)">
+      <button ion-item icon-left (click)="onLoad(signinPage)" *ngIf="!isAuthenticated">
         <ion-icon name="log-in">
 
         </ion-icon>
@@ -24,14 +24,14 @@
       </button>
 
 
-      <button ion-item icon-left (click)="onLoad(signupPage)">
+      <button ion-item icon-left (click)="onLoad(signupPage)" *ngIf="!isAuthenticated">
         <ion-icon name="person">
 
         </ion-icon>
         Signup
       </button>
 
-      <button ion-item icon-left (click)="onLogout()">
+      <button ion-item icon-left (click)="onLogout()" *ngIf="isAuthenticated">
         <ion-icon name="log-out">
 
         </ion-icon>
@@ -48,4 +48,4 @@
 </ion-menu>
 
 
-<ion-nav [root]="TabsPage" #nav></ion-nav>
+<ion-nav [root]="rootPage" #nav></ion-nav>
