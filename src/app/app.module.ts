@@ -14,6 +14,8 @@ import {RecipesService} from "../services/recipes";
 import {Signup} from "../pages/signup/signup";
 import {Signin} from "../pages/signin/signin";
 import {AuthService} from "../services/auth";
+import {SLOptionsPage} from "../pages/shopping-list/sl-options/sl-options";
+import {HttpModule} from "@angular/http";
 
 
 @NgModule({
@@ -25,11 +27,12 @@ import {AuthService} from "../services/auth";
     ShoppingList,
     Tabs,
     Signup,
-    Signin
-
+    Signin,
+    SLOptionsPage
   ],
   imports: [
     BrowserModule,
+    HttpModule,
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
@@ -41,7 +44,8 @@ import {AuthService} from "../services/auth";
     ShoppingList,
     Tabs,
     Signup,
-    Signin
+    Signin,
+    SLOptionsPage
   ],
   providers: [
     StatusBar,
