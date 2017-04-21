@@ -47,12 +47,19 @@ export class EditRecipe implements OnInit {
     let difficulty = 'Medium';
     let ingredients = [];
 
+
     if(this.mode == 'Edit'){
       title = this.recipe.title;
       description = this.recipe.description;
       difficulty = this.recipe.difficulty;
+
       for(let ingredient of this.recipe.ingredients){
-        ingredients.push(new FormControl(ingredient.name,Validators.required));
+        console.log(this.recipe)
+        console.log(ingredient)
+        if (ingredient) {
+          ingredients.push(new FormControl(ingredient.name, Validators.required));
+        }
+
       }
 
     }
@@ -64,19 +71,27 @@ export class EditRecipe implements OnInit {
       'ingredients': new FormArray(ingredients)
     });
 
+
   }
 
   onSubmit() {
+
     const value = this.recipeForm.value;
+    console.log(value);
+
     let ingredients = [];
+
     if (value.ingredients.length > 0) {
+
       ingredients = value.ingredients.map((name) => {
+
         return {name: name, amount: 1}
+
       });
     }
 
     if(this.mode=="Edit"){
-      this.recipesService.updateRecipe(this.index,value.title,value.description,value.difficulty,value.ingredients);
+      this.recipesService.updateRecipe(this.index, value.title, value.description, value.difficulty, ingredients);
     }else{
       console.log('hola?');
       this.recipesService.addRecipe(value.title, value.description, value.difficulty, ingredients);
